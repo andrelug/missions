@@ -8,8 +8,6 @@ import postController from './controllers/postController';
 
 const routes = express();
 
-routes.set('views', path.join(__dirname, './views'));
-
 // Basic Routes
 routes.get('/', basicController.get);
 
