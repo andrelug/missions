@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 
 // Controllers Imports
 import basicController from './controllers/basicController';
@@ -6,6 +7,8 @@ import userController from './controllers/userController';
 import postController from './controllers/postController';
 
 const routes = express();
+
+routes.set('views', path.join(__dirname, './views'));
 
 // Basic Routes
 routes.get('/', basicController.get);

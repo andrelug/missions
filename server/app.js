@@ -23,7 +23,6 @@ const app = express();
 const MongoStore = connectmongo(session);
 
 // View engine setup
-app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'pug');
 
 // middlewares
