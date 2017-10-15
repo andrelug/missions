@@ -13,10 +13,11 @@ import stylus from 'stylus';
 import nib from 'nib';
 import connectmongo from 'connect-mongo';
 import passport from 'passport';
+import config from './config/variables';
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/database', () => {
+mongoose.connect(config.db, () => {
 	console.log('Connected to mongodb...');
 });
 
@@ -69,31 +70,30 @@ app.use(session({
 	clear_interval: 3600
   })
 }));
-app.use(lusca({
-    csrf: true,
-    csp: {
-		policy: {
-		'default-src': '\'self\'',
-		'img-src': '*'
-		}
-	},
-    xframe: 'SAMEORIGIN',
-    p3p: 'ABCDEF',
-    hsts: {maxAge: 31536000, includeSubDomains: true, preload: true},
-    xssProtection: true,
-    nosniff: true
-}));
+// app.use(lusca({
+//     csrf: true,
+//     csp: {
+// 		policy: {
+// 		'default-src': '\'self\'',
+// 		'img-src': '*'
+// 		}
+// 	},
+//     xframe: 'SAMEORIGIN',
+//     p3p: 'ABCDEF',
+//     hsts: {maxAge: 31536000, includeSubDomains: true, preload: true},
+//     xssProtection: true,
+//     nosniff: true
+// }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
 // api
+// import api from './api';
+// app.use('/api', api);
+// routes
 import routes from './routes';
-app.use('/api', routes);
-// react
-app.get('*', (req, res) => {
-	res.render('index');
-});
+app.use('/', routes);
 
 // Error handler
 app.use(errorHandler());

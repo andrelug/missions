@@ -1,4 +1,26 @@
 extends layout
 
 block content
-	#app
+	include partials/header
+	
+	if user
+		h1 oi #{user}
+	else
+		h1 oi
+		
+	p signup
+	form(action="/signup", method="post")
+		input(type="text", name="email")
+		input(type="password", name="password")
+		button(type="submit") enviar
+		
+	p login
+	form(action="/login", method="post")
+		input(type="text", name="email")
+		input(type="password", name="password")
+		button(type="submit") enviar
+		
+	p facebook
+	a(href="/auth/facebook") login pelo facebook
+		
+	include partials/footer

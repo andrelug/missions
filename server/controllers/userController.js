@@ -2,6 +2,10 @@ import db from './../models/index.js';
 
 const userController = {};
 
+userController.painel = (req, res) => {
+	res.render('dash/painel', { user: req.user });
+};
+
 userController.post = (req, res) => {
 	const { username, password } = req.body;
 

@@ -1,7 +1,15 @@
-import User from './User';
-import Post from './Post';
+import User from './user';
+import Mission from './mission';
+import Category from './category';
+import Company from './company';
+import Tool from './tool';
+import Badge from './badge';
 
 export default {
 	User,
-	Post
+	Mission,
+	Category,
+	Company,
+	Tool,
+	Badge
 };

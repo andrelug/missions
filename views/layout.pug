@@ -1,11 +1,11 @@
 doctype html
 html(lang="pt_BR")
 	head
-		include head
+		include partials/head
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		
+
 	body
 		block content
-
-		script(src="app/bundle.js")
+			
+		include partials/scripts

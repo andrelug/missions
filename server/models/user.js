@@ -1,23 +1,91 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt-nodejs';
 
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-	username: {
-		type: String,
-		required: true,
-		minLength: [5, 'Nome de usuário precisa ter 5 caracteres ou mais.']
+	name: {
+		first: String,
+		last: String,
+		parsed: String,
+		username: String
 	},
-	password: {
-		type: String,
-		required: true,
-		minLength: [8, 'A senha precisa ter 8 caracteres ou mais.']
+	password: String,
+	status: String,
+	email: {
+		primary: {
+			type: String,
+			unique: true
+		},
+		others: [String]
 	},
+	phone: {
+		primary: String,
+		others: [String]
+	},
+	address: {
+		street: String,
+		number: String,
+		other: String,
+		city: String,
+		state: String,
+		country: String,
+		code: String
+	},
+	birthDate: Date,
+	gender: String,
+	bio: String,
+	website: String,
+	photo: String,
+	coverPhoto: String,
+	social: {
+		facebook: {
+			link: String,
+			id: String,
+			token: String,
+			email: String,
+			url: String,
+			graph: Object
+		}
+	},
+	arts: [String],
+	_professional: {type: Schema.ObjectId, ref: 'Category'},
+	hobbies: [String],
+	gamification: {
+		level: {
+			atual: Number,
+			history: Array
+		},
+		points: {
+			atual: Number,
+			history: Array
+		},
+		_badges: [{type: Schema.ObjectId, ref: 'Badge'}]
+	},
+	joinDate: Date,
+	stars: [String],
+	accountType: {
+		type: String,
+		default: 'killer'
+	},
+	ownCompany: Boolean,
+	_company: {type: Schema.ObjectId, ref: 'Company'},
+	availability: String,
 	isDeleted: { type: Boolean, default: false },
 	createdAt: { type: Date, default: Date.now },
 });
 
 // encryption here
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
 
 const User = mongoose.model('User', userSchema);
+
 export default User;
