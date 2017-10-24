@@ -3,24 +3,89 @@ extends layout
 block content
 	include partials/header
 	
-	if user
-		h1 oi #{user}
-	else
-		h1 oi
-		
-	p signup
-	form(action="/signup", method="post")
-		input(type="text", name="email")
-		input(type="password", name="password")
-		button(type="submit") enviar
-		
-	p login
-	form(action="/login", method="post")
-		input(type="text", name="email")
-		input(type="password", name="password")
-		button(type="submit") enviar
-		
-	p facebook
-	a(href="/auth/facebook") login pelo facebook
+	// BANNER
+	.banner-wrap
+		section.banner
+			h5 Welcome to
+			h1
+				| The Biggest 
+				span Marketplace
+			p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+			img(src='images/top_items.png', alt='banner-img')
+			include partials/search
+	// /BANNER
+	
+	// SERVICES
+	#services-wrap
+		section#services
+			// SERVICE LIST
+			.service-list.column4-wrap
+				// SERVICE ITEM
+				.service-item.column
+					.circle.medium.gradient
+					.circle.white-cover
+					.circle.dark
+						span.icon-present
+					h3 Buy & Sell Easily
+					p
+						| Lorem ipsum dolor sit amet, consectetur sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				// /SERVICE ITEM
+				// SERVICE ITEM
+				.service-item.column
+					.circle.medium.gradient
+					.circle.white-cover
+					.circle.dark
+						span.icon-lock
+					h3 Secure Transaction
+					p
+						| Lorem ipsum dolor sit amet, consectetur sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				// /SERVICE ITEM
+				// SERVICE ITEM
+				.service-item.column
+					.circle.medium.gradient
+					.circle.white-cover
+					.circle.dark
+						span.icon-like
+					h3 Products Control
+					p
+						| Lorem ipsum dolor sit amet, consectetur sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				// /SERVICE ITEM
+				// SERVICE ITEM
+				.service-item.column
+					.circle.medium.gradient
+					.circle.white-cover
+					.circle.dark
+						span.icon-diamond
+					h3 Quality Platform
+					p
+						| Lorem ipsum dolor sit amet, consectetur sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				// /SERVICE ITEM
+			// /SERVICE LIST
+			.clearfix
+	// /SERVICES
+	
+	// PROMO
+	.promo-banner.dark.left
+		span.icon-wallet
+		h5 Make money instantly!
+		h1
+			| Start 
+			span Selling
+		a.button.medium.primary(href='#') Open Your Shop!
+	// /PROMO
+	// PROMO
+	.promo-banner.secondary.right
+		span.icon-tag
+		h5 Find anything you want
+		h1 Start Buying
+		a.button.medium.dark(href='#') Register Now!
+	// /PROMO
+	.clearfix
+
+	include partials/missionList
+	
+	include partials/subscriptionBanner
+
 		
 	include partials/footer

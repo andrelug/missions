@@ -15,7 +15,8 @@ const userSchema = new Schema({
 	email: {
 		primary: {
 			type: String,
-			unique: true
+			unique: true,
+			required: true
 		},
 		others: [String]
 	},
@@ -26,6 +27,7 @@ const userSchema = new Schema({
 	address: {
 		street: String,
 		number: String,
+		complemento: String,
 		other: String,
 		city: String,
 		state: String,
@@ -46,7 +48,12 @@ const userSchema = new Schema({
 			email: String,
 			url: String,
 			graph: Object
-		}
+		},
+		twitter: String,
+		google: String,
+		behance: String,
+		dribble: String,
+		github: String
 	},
 	arts: [String],
 	_professional: {type: Schema.ObjectId, ref: 'Category'},
@@ -67,6 +74,22 @@ const userSchema = new Schema({
 	accountType: {
 		type: String,
 		default: 'killer'
+	},
+	missions: [{
+		mission: {type: Schema.ObjectId, ref: 'Mission'},
+		date: Date,
+		value: Number,
+		status: String
+	}],
+	finance: {
+		totalDue: Number,
+		totalHistory: Number,
+		totalCashed: Number,
+		activity: [{
+			action: String,
+			value: Number,
+			date: Date
+		}]
 	},
 	ownCompany: Boolean,
 	_company: {type: Schema.ObjectId, ref: 'Company'},

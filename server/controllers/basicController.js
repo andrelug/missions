@@ -1,7 +1,12 @@
 const basicController = {};
 
 basicController.getHome = (req, res) => {
-	res.render('index');
+	if(req.user) {
+		res.render('index', {user: req.user});
+	} else {
+		res.render('index');
+	}
+
 };
 basicController.getAbout = (req, res) => {
 	res.render('sobre');

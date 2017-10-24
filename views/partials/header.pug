@@ -1,2 +1,165 @@
-header
-    a(href="#") logo
+// HEADER
+.header-wrap
+	header
+		// LOGO
+		a(href='index.html')
+			figure.logo
+				img(src='#', alt='high stakes missions')
+		// /LOGO
+		// MOBILE MENU HANDLER
+		.mobile-menu-handler.left.primary
+			img(src='images/pull-icon.png', alt='pull-icon')
+		// /MOBILE MENU HANDLER
+		// LOGO MOBILE
+		a(href='index.html')
+			figure.logo-mobile
+				img(src='#', alt='high stakes missions')
+		// /LOGO MOBILE
+		// MOBILE ACCOUNT OPTIONS HANDLER
+		.mobile-account-options-handler.right.secondary
+			span.icon-user
+		// /MOBILE ACCOUNT OPTIONS HANDLER
+		// USER BOARD
+		.user-board
+			if (user)
+				// USER QUICKVIEW
+				.user-quickview
+					// USER AVATAR
+					a(href='author-profile.html')
+						.outer-ring
+							.inner-ring
+							figure.user-avatar
+								img(src=`${user.photo || '/images/profile-default-image.png'}`, alt='avatar')
+					// /USER AVATAR
+					// USER INFORMATION
+					p.user-name #{user.name.first || 'seu'} #{user.name.last || 'nome'}
+					// SVG ARROW
+					svg.svg-arrow
+						use(xlink:href='#svg-arrow')
+					// /SVG ARROW
+					p.user-money #{user.accountType}
+					// /USER INFORMATION
+					// DROPDOWN
+					ul.dropdown.small.hover-effect.closed
+						li.dropdown-item
+							.dropdown-triangle
+							a(href='/painel') painel
+						li.dropdown-item
+							a(href='/perfil') página de perfil
+						li.dropdown-item
+							a(href='/configuracoes') configurações da conta
+					// /DROPDOWN
+					// /USER QUICKVIEW
+			// ACCOUNT ACTIONS
+			.account-actions
+				if (user)
+					a.button.secondary(href='/logout') sair
+				else
+					a.button.primary(href='/auth/facebook') tornar um killer
+					a.button.secondary(href='/auth/facebook') entrar
+			// /ACCOUNT ACTIONS
+			// /USER BOARD
+// /HEADER
+
+// SIDE MENU
+#mobile-menu.side-menu.left.closed
+	// SVG PLUS
+	svg.svg-plus
+		use(xlink:href='#svg-plus')
+	// /SVG PLUS
+	// SIDE MENU HEADER
+	.side-menu-header
+		figure.logo.small
+			img(src='images/logo.png', alt='logo')
+	// /SIDE MENU HEADER
+	// SIDE MENU TITLE
+	p.side-menu-title Main Links
+	// /SIDE MENU TITLE
+	// DROPDOWN
+	ul.dropdown.dark.hover-effect.interactive
+		// DROPDOWN ITEM
+		li.dropdown-item
+			a(href='/') início
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item
+			a(href='/sobre') sobre
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item
+			a(href='contato') contato
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item
+			a(href='http://highstakes.co', target='_blank') high stakes
+		// /DROPDOWN ITEM
+	// /DROPDOWN
+// /SIDE MENU
+
+
+// SIDE MENU
+#account-options-menu.side-menu.right.closed
+	// SVG PLUS
+	svg.svg-plus
+		use(xlink:href='#svg-plus')
+	// /SVG PLUS
+	// SIDE MENU HEADER
+	.side-menu-header
+		// USER QUICKVIEW
+		.user-quickview
+			// USER AVATAR
+			a(href='author-profile.html')
+				.outer-ring
+					.inner-ring
+					figure.user-avatar
+						img(src='images/avatars/avatar_01.jpg', alt='avatar')
+			// /USER AVATAR
+			// USER INFORMATION
+			p.user-name Johnny Fisher
+			p.user-money $745.00
+			// /USER INFORMATION
+		// /USER QUICKVIEW
+	// /SIDE MENU HEADER
+	// SIDE MENU TITLE
+	p.side-menu-title sua conta
+	// /SIDE MENU TITLE
+	// DROPDOWN
+	ul.dropdown.dark.hover-effect
+		// DROPDOWN ITEM
+		li.dropdown-item
+			a(href='/painel') painel
+		li.dropdown-item
+			a(href='/perfil') página de perfil
+		li.dropdown-item
+			a(href='/configuracoes') configurações da conta
+		// /DROPDOWN ITEM
+	// /DROPDOWN
+	a.button.medium.secondary(href='/auth/facebook') entrar
+	a.button.medium.primary(href='/auth/facebook') tornar um killer
+// /SIDE MENU
+
+// MAIN MENU
+.main-menu-wrap
+	.menu-bar
+		nav
+			ul.main-menu
+				// MENU ITEM
+				li.menu-item
+					a(href='/') início
+				// /MENU ITEM
+				// MENU ITEM
+				li.menu-item
+					a(href='/sobre') sobre
+				// /MENU ITEM
+				// MENU ITEM
+				li.menu-item
+					a(href='/contato') contato
+				// /MENU ITEM
+				// MENU ITEM
+				li.menu-item
+					a(href='http://highstakes.co', target='_blank') high stakes
+				// /MENU ITEM
+		form.search-form
+			input#search_products.rounded(type='text', name='search', placeholder='encontre sua próxima missão...')
+			input(type='image', src='images/search-icon.png', alt='search-icon')
+// /MAIN MENU

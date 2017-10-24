@@ -1,0 +1,6 @@
+.share-links li a.git {
+	background-image: url(../images/social/github.png);
+	background-color: #000;
+	background-repeat: no-repeat;
+	background-position: center;
+}

@@ -3,12 +3,12 @@ import passport from './../config/passport';
 const authController = {};
 
 authController.local = passport.authenticate('local-signup', {
-    successRedirect : '/painel',
+    successRedirect : '/',
     failureRedirect : '/registro'
 });
 
 authController.login = passport.authenticate('local-login', {
-    successRedirect : '/painel',
+    successRedirect : '/',
     failureRedirect : '/registro'
 });
 
@@ -18,11 +18,11 @@ authController.logout = (req, res) => {
 }
 
 authController.authFacebook = passport.authenticate('facebook', {
-    scope : ['user_friends']
+    scope : ['email', 'user_friends']
 });
 
 authController.authFacebookCallback = passport.authenticate('facebook', {
-    successRedirect : '/painel',
+    successRedirect : '/',
     failureRedirect : '/registro'
 });
 

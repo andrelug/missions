@@ -3,7 +3,11 @@ import db from './../models/index.js';
 const userController = {};
 
 userController.painel = (req, res) => {
-	res.render('dash/painel', { user: req.user });
+	res.render('dash/painel', { user: req.user, page: 'painel' });
+};
+
+userController.minhasMissoes = (req, res) => {
+	res.render('dash/user/minhas-missoes', { user: req.user, page: 'minhasMissoes' });
 };
 
 userController.post = (req, res) => {

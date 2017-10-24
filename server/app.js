@@ -35,13 +35,13 @@ app.use(logger('dev', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(stylus.middleware({
-	src: path.join(__dirname, '../public/css'),
-	dest: path.join(__dirname, '../public/css'),
-	use: [nib()],
-	import: ['nib'],
-	force: true
-}));
+// app.use(stylus.middleware({
+// 	src: path.join(__dirname, '../public/css'),
+// 	dest: path.join(__dirname, '../public/css'),
+// 	use: [nib()],
+// 	import: ['nib'],
+// 	force: true
+// }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 

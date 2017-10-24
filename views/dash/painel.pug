@@ -1,1 +1,249 @@
-h1 oi #{user.email.primary}
+extends dashLayout
+
+block content
+	
+	include partials/sideMenu
+	
+	// DASHBOARD BODY
+	.dashboard-body
+		include partials/header
+		
+		// DASHBOARD CONTENT
+		.dashboard-content
+			// HEADLINE
+			.headline.buttons.primary
+				h4 configurações da conta
+				button.button.mid-short.primary salvar
+			// /HEADLINE
+			// FORM BOX ITEMS
+			.form-box-items
+				// FORM BOX ITEM
+				.form-box-item
+					h4 informações do perfil
+					hr.line-separator
+					// PROFILE IMAGE UPLOAD
+					.profile-image
+						.profile-image-data
+							figure.user-avatar.medium
+								img(src=`${user.photo || '/images/profile-default-image.png'}`, alt='imagem de perfil')
+							p.text-header foto de perfil
+							p.upload-details tamanho mínimo 70x70
+						a#profilePhoto.button.mid-short.dark-light(onclick="getFile()" style="cursor:pointer;") subir imagem...
+						div(style="height:0;width:0;overflow:hidden;")
+							input#upfile(type="file", value="upload", onchange="sub(this)")
+					// PROFILE IMAGE UPLOAD
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label.required(for='acc_first_name') primeiro nome
+						input#acc_first_name(type='text', name='acc_first_name', value=`${user.name.first || ""}`, placeholder='seu nome')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label.required(for='acc_last_name') sobrenome(s)
+						input#acc_last_name(type='text', name='acc_last_name', value=`${user.name.last || ""}`, placeholder='seu(s) sobrenome(s)')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='new_pwd') nova senha
+						input#new_pwd(type='password', name='new_pwd', placeholder='entre a nova senha')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='new_pwd2') repetir nova senha
+						input#new_pwd2(type='password', name='new_pwd2', placeholder='confirme a nova senha')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='new_email') email
+						input#new_email(type='email', name='new_email', placeholder='seu e-mail principal', value=`${user.email.primary || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='new_phone') telefone
+						input#new_phone(type='email', name='new_phone', placeholder='seu telefone principal', value=`${user.phone.primary || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='website_url') website
+						input#website_url(type='text', name='website_url', placeholder='seu website', value=`${user.website || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label.required(for='genero') gênero
+						label.select-block(for='genero')
+							select#genero(name='genero')
+								option(value='0') selecione seu gênero
+								option(value='masculino') masculino
+								option(value='feminino') feminino
+								option(value='outro') outro
+							// SVG ARROW
+							svg.svg-arrow
+								use(xlink:href='#svg-arrow')
+							// /SVG ARROW
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label(for='dataNascimento') data de nascimento
+						input#dataNascimento(type='text', name='dataNascimento', placeholder='data de nascimento', value=`${user.birthDate || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label.required(for='status') disponibilidade para trabalho
+						label.select-block(for='status')
+							select#status(name='status')
+								option(value='0') selecione sua disponibilidade
+								option(value='buscando') buscando trabalho
+								option(value='pausado') não buscando trabalho
+								option(value='lotado') lotado mas aceitando para frente
+							// SVG ARROW
+							svg.svg-arrow
+								use(xlink:href='#svg-arrow')
+							// /SVG ARROW
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='about') sobre
+						textarea#about(name='about', placeholder='escreva um texto sobre você')
+							if user.bio !== undefined
+								#{user.bio}
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label preferências
+						// CHECKBOX
+						input#show_balance(type='checkbox', name='show_balance', checked='')
+						label.label-check(for='show_balance')
+							span.checkbox.primary
+								span
+							| 								me notificar por e-mail de novas missões
+						// /CHECKBOX
+						// CHECKBOX
+						input#email_notif(type='checkbox', name='email_notif')
+						label.label-check(for='email_notif')
+							span.checkbox.primary
+								span
+							| 								deixar minhas informações públicas
+						// /CHECKBOX
+					// /INPUT CONTAINER
+				// /FORM BOX ITEM
+				// FORM BOX ITEM
+				.form-box-item.spaced
+					h4 social e profissional
+					hr.line-separator
+					// INPUT CONTAINER
+					.input-container
+						ul.share-links
+							li
+								a.fb(href='#')
+						input#social_fb_link(form='profile-info-form', type='text', name='social_fb_link', value=`${user.social.facebook.url || ""}`, placeholder='link para seu perfil no facebook')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						ul.share-links
+							li
+								a.twt(href='#')
+						input#social_twt_link(form='profile-info-form', type='text', name='social_twt_link', placeholder='link para seu perfil no twitter', value=`${user.social.twitter || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						ul.share-links
+							li
+								a.gplus(href='#')
+						input#social_gplus_link(form='profile-info-form', type='text', name='social_gplus_link', placeholder='link para seu perfil no google+', value=`${user.social.google || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						ul.share-links
+							li
+								a.db(href='#')
+						input#social_db_link(form='profile-info-form', type='text', name='social_db_link', placeholder='link para seu perfil no dribble', value=`${user.social.dribble || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						ul.share-links
+							li
+								a.be(href='#')
+						input#social_be_link(form='profile-info-form', type='text', name='social_be_link', placeholder='link para seu perfil no behance', value=`${user.social.behance || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						ul.share-links
+							li
+								a.git(href='#')
+						input#social_be_link(form='profile-info-form', type='text', name='social_git_link', placeholder='link para seu perfil no github', value=`${user.social.github || ""}`)
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label.required(for='arte') suas artes
+						p separe por ','
+						input#arte(type='text', name='arte', value=`${user.arts || ""}`, placeholder='suas artes')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label.required(for='categoria') área de atuação
+						label.select-block(for='categoria')
+							select#categoria(name='categoria')
+								option(value='0') selecione sua área principal
+								option(value='design') design
+								option(value='programacao') programação
+								option(value='copy') copy
+							// SVG ARROW
+							svg.svg-arrow
+								use(xlink:href='#svg-arrow')
+							// /SVG ARROW
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label.required(for='hobbie') seus hobbies
+						p separe por ','
+						input#hobbie(type='text', name='hobbie', value=`${user.hobbies || ""}`, placeholder='seus hobbies')
+					// /INPUT CONTAINER
+				// /FORM BOX ITEM
+				// FORM BOX ITEM
+				.form-box-item
+					h4 endereço
+					hr.line-separator
+					br
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label.required(for='rua') rua
+						input#rua(type='text', name='rua', value=`${user.address.street || ""}`, placeholder='sua rua')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label.required(for='numero') número
+						input#numero(type='text', name='numero', value=`${user.address.number || ""}`, placeholder='número')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label(for='complemento') complemento
+						input#complemento(type='password', name='complemento', value=`${user.address.complemento || ""}`, placeholder='complemento')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='bairro') bairro
+						input#bairro(type='password', name='bairro', value=`${user.address.other || ""}`, placeholder='bairro')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='cidade') cidade
+						input#cidade(type='password', name='cidade', value=`${user.address.city || ""}`, placeholder='cidade')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label(for='estado') estado
+						input#estado(type='password', name='estado', value=`${user.address.state || ""}`, placeholder='estado')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container.half
+						label.rl-label(for='pais') país
+						input#pais(type='password', name='pais', value=`${user.address.country || ""}`, placeholder='país')
+					// /INPUT CONTAINER
+					// INPUT CONTAINER
+					.input-container
+						label.rl-label(for='cep') cep
+						input#cep(type='password', name='cep', value=`${user.address.code || ""}`, placeholder='cep')
+					// /INPUT CONTAINER
+				// /FORM BOX ITEM
+			// /FORM BOX
+		// DASHBOARD CONTENT

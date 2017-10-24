@@ -16,6 +16,7 @@ const missionSchema = new Schema({
 	budget: Number,
 	availability: String,
 	description: String,
+	_tasks: [{type: Schema.ObjectId, ref: "Task"}],
 	applications: [{
 		_user: {type: Schema.ObjectId, ref: 'User'},
 		text: String,

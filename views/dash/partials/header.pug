@@ -1,0 +1,69 @@
+// DASHBOARD HEADER
+.dashboard-header.retracted
+	// DB CLOSE BUTTON
+	a.db-close-button(href='/')
+		img(src='images/dashboard/back-icon.png', alt='back-icon')
+	// DB CLOSE BUTTON
+	// DB OPTIONS BUTTON
+	.db-options-button
+		img(src='images/dashboard/db-list-right.png', alt='db-list-right')
+		img(src='images/dashboard/close-icon.png', alt='close-icon')
+	// DB OPTIONS BUTTON
+	// DASHBOARD HEADER ITEM
+	.dashboard-header-item.title
+		// DB SIDE MENU HANDLER
+		.db-side-menu-handler
+			img(src='images/dashboard/db-list-left.png', alt='db-list-left')
+		// /DB SIDE MENU HANDLER
+		h6 seu painel
+	// /DASHBOARD HEADER ITEM
+	// DASHBOARD HEADER ITEM
+	.dashboard-header-item.form
+		form.dashboard-search
+			input#search_dashboard(type='text', name='search', placeholder='busca por missões')
+			input(type='image', src='images/dashboard/search-icon.png', alt='search-icon')
+	// /DASHBOARD HEADER ITEM
+	// DASHBOARD HEADER ITEM
+	.dashboard-header-item.stats
+		// STATS META
+		.stats-meta
+			.pie-chart.pie-chart1
+				// SVG PLUS
+				svg.svg-plus.primary
+					use(xlink:href='#svg-plus')
+				// /SVG PLUS
+			h6 30
+			p builders & ampers
+		// /STATS META
+	// /DASHBOARD HEADER ITEM
+	// DASHBOARD HEADER ITEM
+	.dashboard-header-item.stats
+		// STATS META
+		.stats-meta
+			.pie-chart.pie-chart2
+				// SVG PLUS
+				svg.svg-minus.tertiary
+					use(xlink:href='#svg-minus')
+				// /SVG PLUS
+			h6 500
+			p killers
+		// /STATS META
+	// /DASHBOARD HEADER ITEM
+	// DASHBOARD HEADER ITEM
+	.dashboard-header-item.stats
+		// STATS META
+		.stats-meta
+			.pie-chart.pie-chart3
+				// SVG PLUS
+				svg.svg-plus.primary
+					use(xlink:href='#svg-plus')
+				// /SVG PLUS
+			h6 100K
+			p pessoas no universo high stakes
+		// /STATS META
+	// /DASHBOARD HEADER ITEM
+	// DASHBOARD HEADER ITEM
+	.dashboard-header-item.back-button
+		a.button.mid.dark-light(href='index.html') Back to Homepage
+	// /DASHBOARD HEADER ITEM
+// DASHBOARD HEADER

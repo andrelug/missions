@@ -106,47 +106,116 @@ function(req, token, refreshToken, profile, done) {
 
     // asynchronous
     process.nextTick(function() {
-        console.log('profile ' + JSON.stringify(profile));
-        // find the user in the database based on their facebook id
-        db.User.findOne({ 'social.facebook.id' : profile.id }, function(err, user) {
+        console.log('profile: ' + JSON.stringify(profile))
+        if(!req.user) {
+            // find the user in the database based on their facebook id
+            db.User.findOne({ $or: [{ 'social.facebook.id': profile.id }, { 'email.primary': profile.emails[0].value }] }, function(err, user) {
+                // if there is an error, stop everything and return that
+                if (err)
+                    return done(err);
+                // if the user is found, then log them in
+                if (user) {
+                    // update the current users facebook credentials
+                    if(!user.social.id) {
+                        user.social.facebook.id    = profile.id;
+                    }
+                    if(!user.social.facebook.token) {
+                        user.social.facebook.token = token;
+                    }
+                    if(!user.social.facebook.url) {
+                        user.social.facebook.url = "https://facebook.com/" + profile.id;
+                    }
+                    if(!user.email.primary !== profile.emails[0].value) {
+                        user.email.others = [];
+                        user.email.others.push(profile.emails[0].value)
+                    }
+                    if(!user.name.first) {
+                        user.name.first = profile.name.givenName;
+                    }
+                    if(!user.name.last) {
+                        user.name.last = profile.name.familyName;
+                    }
+                    if(!user.gender) {
+                        user.gender = profile.gender;
+                    }
+                    if(!user.photo) {
+                        user.photo = "http://graph.facebook.com/" + profile.id + "/picture?type=large";
+                    }
+                    if(!user.name.parsed) {
+                        user.name.parsed = func.string_to_slug(profile.name.givenName + ' ' + profile.name.familyName);
+                    }
 
-            // if there is an error, stop everything and return that
-            // ie an error connecting to the database
-            if (err)
-                return done(err);
+                    user.save().then((successUser) => {
+                        return done(null, successUser);
+                    }).catch((err) => {
+                        if (err)
+                            throw err;
+                        return done(null, false);
+                    });
+                } else {
+                    // if there is no user found with that facebook id, create them
+                    var newUser            = new db.User();
 
-            // if the user is found, then log them in
-            if (user) {
-                return done(null, user); // user found, return that user
-            } else {
-                // if there is no user found with that facebook id, create them
-                var newUser            = new db.User();
+                    // set all of the facebook information in our user model
+                    newUser.social.facebook.id = profile.id; // set the users facebook id
+                    newUser.social.facebook.token = token; // we will save the token that facebook provides to the user
+                    newUser.social.facebook.url = "https://facebook.com/" + profile.id;
 
-                // set all of the facebook information in our user model
-                newUser.social.facebook.id = profile.id; // set the users facebook id
-                newUser.social.facebook.token = token; // we will save the token that facebook provides to the user
-                newUser.social.facebook.url = "https://facebook.com/" + profile.id;
+                    // General profile related
+                    newUser.name.first = profile.name.givenName;
+                    newUser.name.last = profile.name.familyName;
+                    newUser.email.primary = profile.emails[0].value;
+                    newUser.gender = profile.gender;
+                    newUser.name.parsed = func.string_to_slug(profile.name.givenName + ' ' + profile.name.familyName);
+                    newUser.photo = "http://graph.facebook.com/" + profile.id + "/picture?type=large";
 
-                // General profile related
-                newUser.name.first = profile.name.givenName;
-                newUser.name.last = profile.name.familyName;
-                newUser.email.primary = profile.emails[0].value;
-                newUser.gender = profile.gender;
-                newUser.name.parsed = func.string_to_slug(profile.name.givenName + ' ' + profile.name.familyName);
-                newUser.photo = "http://graph.facebook.com/" + profile.id + "/picture?type=large";
+                    newUser.save().then((successUser) => {
+                        return done(null, successUser);
+                	}).catch((err) => {
+                        if (err)
+                            throw err;
+                        return done(null, false);
+                	});
+                }
+            });
+        } else {
+            // user already exists and is logged in, we have to link accounts
+            var user            = req.user; // pull the user out of the session
 
-                newUser.save().then((successUser) => {
-                    return done(null, successUser);
-            	}).catch((err) => {
-                    if (err)
-                        throw err;
-                    return done(null, false);
-            	});
+            // update the current users facebook credentials
+            user.social.facebook.id    = profile.id;
+            user.social.facebook.token = token;
+            user.social.facebook.url = "https://facebook.com/" + profile.id;
+
+            if(user.email.primary !== profile.emails[0].value) {
+                user.email.others = [];
+                user.email.others.push(profile.emails[0].value)
+            }
+            if(!user.name.first) {
+                user.name.first = profile.name.givenName;
+            }
+            if(!user.name.last) {
+                user.name.last = profile.name.familyName;
+            }
+            if(!user.gender) {
+                user.gender = profile.gender;
+            }
+            if(!user.photo) {
+                user.photo = "http://graph.facebook.com/" + profile.id + "/picture?type=large";
+            }
+            if(!user.name.parsed) {
+                user.name.parsed = func.string_to_slug(profile.name.givenName + ' ' + profile.name.familyName);
             }
 
-        });
+            user.save().then((successUser) => {
+                return done(null, successUser);
+            }).catch((err) => {
+                if (err)
+                    throw err;
+                return done(null, false);
+            });
+        }
     });
-
 }));
 
 export default passport;

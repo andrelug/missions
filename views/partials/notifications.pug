@@ -1,0 +1,202 @@
+// ACCOUNT INFORMATION
+.account-information
+    a(href='favourites.html')
+        .account-wishlist-quickview
+            span.icon-heart
+    .account-cart-quickview
+        span.icon-present
+            // SVG ARROW
+            svg.svg-arrow
+                use(xlink:href='#svg-arrow')
+            // /SVG ARROW
+        // PIN
+        span.pin.soft-edged.secondary 7
+        // /PIN
+        // DROPDOWN CART
+        ul.dropdown.cart.closed
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a.link-to(href='item-v1.html')
+                // SVG PLUS
+                svg.svg-plus
+                    use(xlink:href='#svg-plus')
+                // /SVG PLUS
+                .dropdown-triangle
+                figure.product-preview-image.tiny
+                    img(src='images/items/pixel_s.jpg', alt='')
+                p.text-header.tiny Pixel Diamond Gaming Shop
+                p.category.tiny.primary Shopify
+                p.price.tiny
+                    span $
+                    | 86
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a.link-to(href='item-v1.html')
+                // SVG PLUS
+                svg.svg-plus
+                    use(xlink:href='#svg-plus')
+                // /SVG PLUS
+                figure.product-preview-image.tiny
+                    img(src='images/items/monsters_s.jpg', alt='')
+                p.text-header.tiny Little Monsters - 40 Pack Button Badge Maker
+                p.category.tiny.primary Graphics
+                p.price.tiny
+                    span $
+                    | 10
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a.link-to(href='item-v1.html')
+                // SVG PLUS
+                svg.svg-plus
+                    use(xlink:href='#svg-plus')
+                // /SVG PLUS
+                figure.product-preview-image.tiny
+                    img(src='images/items/flat_s.jpg', alt='')
+                p.text-header.tiny Flatland - Hero Image Composer
+                p.category.tiny.primary Shopify
+                p.price.tiny
+                    span $
+                    | 12
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                p.text-header.tiny Total
+                p.price
+                    span $
+                    | 108.00
+                a.button.primary.half(href='cart.html') Go to Cart
+                a.button.secondary.half(href='checkout.html') Go to Checkout
+            // /DROPDOWN ITEM
+            // /DROPDOWN CART
+    .account-email-quickview
+        span.icon-envelope
+            // SVG ARROW
+            svg.svg-arrow
+                use(xlink:href='#svg-arrow')
+            // /SVG ARROW
+        // PIN
+        span.pin.soft-edged.secondary !
+        // /PIN
+        // DROPDOWN NOTIFICATIONS
+        ul.dropdown.notifications.closed
+            // DROPDOWN ITEM
+            li.dropdown-item
+                .dropdown-triangle
+                a.link-to(href='dashboard-openmessage.html')
+                figure.user-avatar
+                    img(src='images/avatars/avatar_06.jpg', alt='')
+                p.text-header.tiny
+                    span Sarah-Imaginarium
+                p.subject Product Question
+                p.timestamp May 18th, 2014
+                span.notification-type.secondary-new.icon-envelope
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a.link-to(href='dashboard-openmessage.html')
+                figure.user-avatar
+                    img(src='images/avatars/avatar_04.jpg', alt='')
+                p.text-header.tiny
+                    span Red Thunder Graphics
+                p.subject Support Inquiry
+                p.timestamp May 5th, 2014
+                span.notification-type.icon-envelope-open
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a.link-to(href='dashboard-openmessage.html')
+                figure.user-avatar
+                    img(src='images/avatars/avatar_07.jpg', alt='')
+                p.text-header.tiny
+                    span Twisted Themes
+                p.subject Collaboration
+                p.timestamp Feb 24th, 2014
+                span.notification-type.secondary-new.icon-envelope
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a.link-to(href='dashboard-openmessage.html')
+                figure.user-avatar
+                    img(src='images/avatars/avatar_08.jpg', alt='')
+                p.text-header.tiny
+                    span GregSpiegel1820
+                p.subject How to Install the Theme...
+                p.timestamp Jan 3rd, 2014
+                span.notification-type.icon-action-undo
+                a.button.secondary(href='dashboard-inbox.html') View all Messages
+            // /DROPDOWN ITEM
+            // /DROPDOWN NOTIFICATIONS
+    .account-settings-quickview
+        span.icon-settings
+            // SVG ARROW
+            svg.svg-arrow
+                use(xlink:href='#svg-arrow')
+            // /SVG ARROW
+        // PIN
+        span.pin.soft-edged.primary 49
+        // /PIN
+        // DROPDOWN NOTIFICATIONS
+        ul.dropdown.notifications.no-hover.closed
+            // DROPDOWN ITEM
+            li.dropdown-item
+                .dropdown-triangle
+                a(href='author-profile.html')
+                    figure.user-avatar
+                        img(src='images/avatars/avatar_02.jpg', alt='')
+                p.title
+                    a(href='author-profile.html')
+                        span MeganV.
+                    |  added 
+                    a(href='item-v1.html')
+                        span Pixel Diamond Gaming Shop
+                    |  to favourites
+                p.timestamp 2 Hours ago
+                span.notification-type.primary-new.icon-heart
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a(href='author-profile.html')
+                    figure.user-avatar
+                        img(src='images/avatars/avatar_03.jpg', alt='')
+                p.title
+                    a(href='author-profile.html')
+                        span Thomas_Ket
+                    |  wrote you an 
+                    a(href='author-reputation.html')
+                        span Author’s Reputation
+                p.timestamp 17 Hours ago
+                span.notification-type.icon-star
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a(href='author-profile.html')
+                    figure.user-avatar
+                        img(src='images/avatars/avatar_04.jpg', alt='')
+                p.title
+                    a(href='author-profile.html')
+                        span Red Thunder Graphics
+                    |  commented on 
+                    a(href='item-v1.html')
+                        span 3D Layers - Web Mockup
+                p.timestamp 8 Days Ago
+                span.notification-type.primary-new.icon-bubble
+            // /DROPDOWN ITEM
+            // DROPDOWN ITEM
+            li.dropdown-item
+                a(href='author-profile.html')
+                    figure.user-avatar
+                        img(src='images/avatars/avatar_05.jpg', alt='')
+                p.title
+                    a(href='author-profile.html')
+                        span DaBebop
+                    |  purchased 
+                    a(href='item-v1.html')
+                        span Miniverse - Hero Image Composer
+                p.timestamp 1 Week ago
+                span.notification-type.icon-tag
+                a.button.primary(href='dashboard-notifications.html') View all Notifications
+            // /DROPDOWN ITEM
+            // /DROPDOWN NOTIFICATIONS
+            // /ACCOUNT INFORMATION

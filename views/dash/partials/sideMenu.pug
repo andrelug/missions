@@ -1,0 +1,282 @@
+// SIDE MENU
+#dashboard-options-menu.side-menu.dashboard.left.closed
+	// SVG PLUS
+	svg.svg-plus
+		use(xlink:href='#svg-plus')
+	// /SVG PLUS
+	// SIDE MENU HEADER
+	.side-menu-header
+		// USER QUICKVIEW
+		.user-quickview
+			// USER AVATAR
+			a(href='/perfil')
+				.outer-ring
+					.inner-ring
+					figure.user-avatar
+						img(src=`${user.photo || '/images/profile-default-image.png'}`, alt='avatar')
+			// /USER AVATAR
+			// USER INFORMATION
+			p.user-name #{user.name.first || 'seu'} #{user.name.last || 'nome'}
+			p.user-money #{user.accountType}
+			// /USER INFORMATION
+		// /USER QUICKVIEW
+	// /SIDE MENU HEADER
+	// SIDE MENU TITLE
+	p.side-menu-title sua conta
+	// /SIDE MENU TITLE
+	// DROPDOWN
+	ul.dropdown.dark.hover-effect.interactive
+		// DROPDOWN ITEM
+		li.dropdown-item(class=page=='painel' ? 'active' : '' )
+			a(href='/painel')
+				span.sl-icon.icon-settings
+				|                     configurações da conta
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item(class=page=='minhasMissoes' ? 'active' : '' )
+			a(href='/painel/minhas-missoes')
+				span.sl-icon.icon-layers
+				|                     minhas missões
+		// /DROPDOWN ITEM
+	// /DROPDOWN
+	// SIDE MENU TITLE
+	p.side-menu-title opções empresa
+	// /SIDE MENU TITLE
+	// DROPDOWN
+	ul.dropdown.dark.hover-effect.interactive
+		// DROPDOWN ITEM
+		li.dropdown-item.interactive
+			a(href='#')
+				span.sl-icon.icon-layers
+				|                     missões
+				// SVG ARROW
+				svg.svg-arrow
+					use(xlink:href='#svg-arrow')
+				// /SVG ARROW
+			// INNER DROPDOWN
+			ul.inner-dropdown
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/missoes') todas missões
+					// PIN
+					// span.pin.soft-edged.secondary 2
+					// /PIN
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/missoes/abertas') missões abertas
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/missoes/nova') nova missão
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/categorias') categorias
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/categorias/nova') nova categoria
+				// /INNER DROPDOWN ITEM
+			// INNER DROPDOWN
+			// PIN
+			// span.pin.soft-edged.big.secondary !
+			// /PIN
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item.interactive
+			a(href='#')
+				span.sl-icon.icon-list
+				|                     tarefas
+				// SVG ARROW
+				svg.svg-arrow
+					use(xlink:href='#svg-arrow')
+				// /SVG ARROW
+			// INNER DROPDOWN
+			ul.inner-dropdown
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/tarefas') todas tarefas
+					// PIN
+					// span.pin.soft-edged.secondary 2
+					// /PIN
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/tarefas/abertas') tarefas abertas
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/tarefas/nova') nova tarefa
+				// /INNER DROPDOWN ITEM
+			// INNER DROPDOWN
+			// PIN
+			// span.pin.soft-edged.big.secondary !
+			// /PIN
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item.interactive
+			a(href='#')
+				span.sl-icon.icon-wrench
+				|                     ferramentas
+				// SVG ARROW
+				svg.svg-arrow
+					use(xlink:href='#svg-arrow')
+				// /SVG ARROW
+			// INNER DROPDOWN
+			ul.inner-dropdown
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/ferramentas') todas ferramentas
+					// PIN
+					// span.pin.soft-edged.secondary 2
+					// /PIN
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/ferramentas/nova') nova tarefa
+				// /INNER DROPDOWN ITEM
+			// INNER DROPDOWN
+			// PIN
+			// span.pin.soft-edged.big.secondary !
+			// /PIN
+		// /DROPDOWN ITEM
+	// /DROPDOWN
+	// SIDE MENU TITLE
+	p.side-menu-title gestão
+	// /SIDE MENU TITLE
+	// DROPDOWN
+	ul.dropdown.dark.hover-effect.interactive
+		// DROPDOWN ITEM
+		li.dropdown-item
+			a(href='/paineil/usuarios')
+				span.sl-icon.icon-people
+				|                     usuários
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item.interactive
+			a(href='#')
+				span.sl-icon.icon-layers
+				|                     missões
+				// SVG ARROW
+				svg.svg-arrow
+					use(xlink:href='#svg-arrow')
+				// /SVG ARROW
+			// INNER DROPDOWN
+			ul.inner-dropdown
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/missoes') todas missões
+					// PIN
+					// span.pin.soft-edged.secondary 2
+					// /PIN
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/missoes/abertas') missões abertas
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/missoes/nova') nova missão
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/categorias') categorias
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/categorias/nova') nova categoria
+				// /INNER DROPDOWN ITEM
+			// INNER DROPDOWN
+			// PIN
+			// span.pin.soft-edged.big.secondary !
+			// /PIN
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item.interactive
+			a(href='#')
+				span.sl-icon.icon-list
+				|                     tarefas
+				// SVG ARROW
+				svg.svg-arrow
+					use(xlink:href='#svg-arrow')
+				// /SVG ARROW
+			// INNER DROPDOWN
+			ul.inner-dropdown
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/tarefas') todas tarefas
+					// PIN
+					// span.pin.soft-edged.secondary 2
+					// /PIN
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/tarefas/abertas') tarefas abertas
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/tarefas/nova') nova tarefa
+				// /INNER DROPDOWN ITEM
+			// INNER DROPDOWN
+			// PIN
+			// span.pin.soft-edged.big.secondary !
+			// /PIN
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item.interactive
+			a(href='#')
+				span.sl-icon.icon-badge
+				|                     badges
+				// SVG ARROW
+				svg.svg-arrow
+					use(xlink:href='#svg-arrow')
+				// /SVG ARROW
+			// INNER DROPDOWN
+			ul.inner-dropdown
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/badges') todas as badges
+					// PIN
+					// span.pin.soft-edged.secondary 2
+					// /PIN
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/badges/nova') nova badge
+				// /INNER DROPDOWN ITEM
+			// INNER DROPDOWN
+			// PIN
+			// span.pin.soft-edged.big.secondary !
+			// /PIN
+		// /DROPDOWN ITEM
+		// DROPDOWN ITEM
+		li.dropdown-item.interactive
+			a(href='#')
+				span.sl-icon.icon-organization
+				|                     empresas
+				// SVG ARROW
+				svg.svg-arrow
+					use(xlink:href='#svg-arrow')
+				// /SVG ARROW
+			// INNER DROPDOWN
+			ul.inner-dropdown
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/empresas') todas as empresas
+					// PIN
+					// span.pin.soft-edged.secondary 2
+					// /PIN
+				// /INNER DROPDOWN ITEM
+				// INNER DROPDOWN ITEM
+				li.inner-dropdown-item
+					a(href='/painel/gestao/empresas/nova') nova empresas
+				// /INNER DROPDOWN ITEM
+			// INNER DROPDOWN
+			// PIN
+			// span.pin.soft-edged.big.secondary !
+			// /PIN
+		// /DROPDOWN ITEM
+	// /DROPDOWN
+	a.button.medium.secondary(href='/logout') sair
+// /SIDE MENU

@@ -1,0 +1,21 @@
+// SEARCH WIDGET
+.search-widget
+    form.search-widget-form
+        input(type='text', name='category_name', placeholder='Search goods or services here...')
+        label.select-block(for='categories')
+            select#categories(name='categories')
+                option(value='0') All Categories
+                option(value='1') PSD Templates
+                option(value='2') Hero Images
+                option(value='3') Shopify
+                option(value='4') Icon Packs
+                option(value='5') Graphics
+                option(value='6') Flyers
+                option(value='7') Backgrounds
+                option(value='8') Social Covers
+            // SVG ARROW
+            svg.svg-arrow
+                use(xlink:href='#svg-arrow')
+            // /SVG ARROW
+        button.button.medium.dark Search Now!
+// /SEARCH WIDGET

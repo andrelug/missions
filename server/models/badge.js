@@ -9,7 +9,7 @@ const badgeSchema = new Schema({
     rules: String,
 	slug: String,
     _category: { type: Schema.ObjectId, ref: 'Category'},
-	isDelemted: { type: Boolean, default: false },
+	isDeleted: { type: Boolean, default: false },
 	createdAt: { type: Date, default: Date.now },
 });
 

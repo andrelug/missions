@@ -15,6 +15,7 @@ const toolSchema = new Schema({
         password: String,
         dateChanged: Date
     },
+	_company: { type: Schema.ObjectId, ref: 'Company'},
 	isDelemted: { type: Boolean, default: false },
 	createdAt: { type: Date, default: Date.now },
 });
